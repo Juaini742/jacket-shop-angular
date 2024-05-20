@@ -1,0 +1,226 @@
+{
+  "products": [
+    {
+      "name": "Classic Leather Jacket",
+      "price": 199.99,
+      "rating": 4.5,
+      "brand": "FashionBrand",
+      "material": "Genuine Leather",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210381/Warm_Wool_Jackets_for_Men_tpsfek.jpg",
+      "description": "A timeless leather jacket for all occasions.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Baseball Jacket",
+      "price": 89.99,
+      "rating": 4.2,
+      "brand": "SportyStyle",
+      "material": "Polyester",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210373/Suede_Jacket_with_Notched_Lapels_v6uida.jpg",
+      "description": "A stylish baseball jacket perfect for casual wear.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Jackets and Coats for Men",
+      "price": 149.99,
+      "rating": 4.6,
+      "brand": "MenStyle",
+      "material": "Wool",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210374/Stylish_British_Youth_Suede_Jacket_agwjdt.jpg",
+      "description": "Warm and comfortable jackets and coats for men.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Jackets and Coats for Men 1",
+      "price": 159.99,
+      "rating": 4.7,
+      "brand": "WinterWear",
+      "material": "Polyester",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210348/Baseball_Jacket_ohc28q.jpg",
+      "description": "Stylish and warm jackets for winter.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "COATS JACKETS",
+      "price": 129.99,
+      "rating": 4.3,
+      "brand": "ElegantCoats",
+      "material": "Wool Blend",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210373/Solid_Big_Pocket_Drawstring_spo6vz.jpg",
+      "description": "Elegant coats and jackets for formal occasions.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Cazadora con cremallera ribete de rayas sin camiseta",
+      "price": 79.99,
+      "rating": 4.1,
+      "brand": "CasualWear",
+      "material": "Cotton",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210372/Men_s_Sport_Coat_Chore_lpainx.jpg",
+      "description": "Casual jacket with zipper and striped trim.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Casual Hoodie Long Sleeve Hooded Jacket",
+      "price": 69.99,
+      "rating": 4.0,
+      "brand": "GURUNVANI",
+      "material": "Fleece",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210372/Men_s_Jacket_atzixv.jpg",
+      "description": "Comfortable hoodie jacket with color block design.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Men Blazer Solid Color Lapel Long Sleeve",
+      "price": 109.99,
+      "rating": 4.4,
+      "brand": "FormalWear",
+      "material": "Polyester",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210367/Men_s_Flap_Pocket_Denim_lzqu4q.jpg",
+      "description": "Elegant solid color blazer for men.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Jacket Men's Casual Outdoor Wear",
+      "price": 119.99,
+      "rating": 4.5,
+      "brand": "OutdoorGear",
+      "material": "Nylon",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210366/Men_Zip_Up_Bomber_Jacket_bml92m.jpg",
+      "description": "Casual outdoor jacket for men with big pockets.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Men Zip Up Bomber Jacket",
+      "price": 99.99,
+      "rating": 4.2,
+      "brand": "BomberStyle",
+      "material": "Polyester",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210366/Men_s_Bomber_Jacket_ho03uz.jpg",
+      "description": "Trendy zip up bomber jacket for men.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Stylish British Youth Suede Jacket",
+      "price": 179.99,
+      "rating": 4.5,
+      "brand": "UrbanStyle",
+      "material": "Suede",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210363/Men_Jacket_ybujdc.jpg",
+      "description": "A stylish suede jacket with a British youth design.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Men's Bomber Jacket",
+      "price": 129.99,
+      "rating": 4.3,
+      "brand": "BomberKing",
+      "material": "Polyester",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210359/Men_Blazer_Solid_Color_Lapel_bmq10g.jpg",
+      "description": "A classic bomber jacket perfect for a casual look.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Suede Jacket with Notched Lapels",
+      "price": 189.99,
+      "rating": 4.6,
+      "brand": "ClassicSuede",
+      "material": "Suede",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210355/Jackets_and_Coats_for_Men_1_qor11d.jpg",
+      "description": "A sophisticated suede jacket with notched lapels.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Warm Wool Jackets for Men",
+      "price": 149.99,
+      "rating": 4.7,
+      "brand": "WinterEssentials",
+      "material": "Wool",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210355/Jackets_and_Coats_For_Men_ac3yjk.jpg",
+      "description": "Stylish wool outerwear for winter.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Men's Jacket",
+      "price": 99.99,
+      "rating": 4.2,
+      "brand": "EverydayWear",
+      "material": "Cotton",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210355/COATS_JACKETS_a6o3iv.jpg",
+      "description": "Comfortable cotton jacket for everyday use.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Men's Flap Pocket Denim Jacket",
+      "price": 89.99,
+      "rating": 4.1,
+      "brand": "DenimTrend",
+      "material": "Denim",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210354/COATS_JACKETS_zdzxj7.jpg",
+      "description": "Trendy denim jacket with flap pockets.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Solid Big Pocket Drawstring Collar Neck Leather Jacket",
+      "price": 199.99,
+      "rating": 4.5,
+      "brand": "LeatherLuxury",
+      "material": "Leather",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210354/Jacket_Men_s_Casual_Outdoor_Wear_taygms.jpg",
+      "description": "Luxurious leather jacket with big pockets and drawstring collar.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Men's Sport Coat Chore Jacket",
+      "price": 109.99,
+      "rating": 4.3,
+      "brand": "SportyChic",
+      "material": "Cotton",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210350/Classic_Leather_Jacket_tjkvl5.jpg",
+      "description": "Windproof and warm sport coat chore jacket.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "Manfinity Hypemode Men's Solid Dual Pocket Denim Jacket",
+      "price": 129.99,
+      "rating": 4.4,
+      "brand": "Manfinity",
+      "material": "Denim",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210349/Cazadora_con_cremallera_ribete_bu6m4q.jpg",
+      "description": "Solid dual pocket denim jacket for a modern look.",
+      "returnPolicy": "30 days return policy."
+    },
+    {
+      "name": "OrcaJump - Men's Winter Jacket",
+      "price": 139.99,
+      "rating": 4.6,
+      "brand": "OrcaJump",
+      "material": "Polyester",
+      "image": "https://res.cloudinary.com/dixdqxpza/image/upload/v1716210348/Casual_Hoodie_Long_Sleeve_Hooded_ykke3o.jpg",
+      "description": "Warm and breathable outdoor winter jacket.",
+      "returnPolicy": "30 days return policy."
+    }
+  ],
+  "categories": [
+    {
+      "name": "Leather Jackets"
+    },
+    {
+      "name": "Bomber Jackets"
+    },
+    {
+      "name": "Denim Jackets"
+    },
+    {
+      "name": "Suede Jackets"
+    },
+    {
+      "name": "Wool Jackets"
+    },
+    {
+      "name": "Sport Coats"
+    }
+  ],
+  "sizes": ["S", "M", "L", "XL"],
+  "colors": ["Blue", "Black", "white"]
+}
