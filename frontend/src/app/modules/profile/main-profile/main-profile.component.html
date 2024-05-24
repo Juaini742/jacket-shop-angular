@@ -1,0 +1,43 @@
+<section class="container mt-16 mb-5">
+  <h3 class="font-anton text-3xl text-center">My Account</h3>
+
+  <div class="flex flex-col md:flex-row gap-5 mt-14">
+    <!-- SIDE NAVIGATION -->
+    <div class="bg-gray-100 flex justify-center">
+      <div class="w-56 flex items-center flex-col py-10 h-full">
+        <div
+          class="w-20 h-20 rounded-full overflow-hidden flex-full-center border-2 border-black"
+        >
+          <img src="assets/images/ins.jpg" alt="name" class="min-w-28" />
+        </div>
+        <h6 class="font-anton text-center mt-3">Muhammad Arsyad</h6>
+        <div class="flex flex-col gap-3 w-full px-5 mt-5">
+          <a
+            routerLink="account"
+            routerLinkActive="link-active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="pb-1 border-b border-black"
+            >Account</a
+          >
+          <a
+            routerLink="address"
+            routerLinkActive="link-active"
+            class="pb-1 border-b border-black"
+            >Address</a
+          >
+          <a
+            routerLink="order-history"
+            routerLinkActive="link-active"
+            class="pb-1 border-b border-black"
+            >Order History</a
+          >
+          <button class="button-primary py-2">Logout</button>
+        </div>
+      </div>
+    </div>
+    <!-- SIDE CONTENT -->
+    <div class="flex-1 mt-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

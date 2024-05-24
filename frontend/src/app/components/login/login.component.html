@@ -1,0 +1,29 @@
+<div
+  [ngClass]="{
+    'scale-100': isVisible,
+    'scale-0 hidden': !isVisible
+  }"
+  class="mt-5 flex flex-col w-full gap-2 overflow-hidden"
+>
+  <label for="email">
+    <span class="text-sm text-black">Email</span>
+    <input
+      type="email"
+      id="email"
+      class="border border-black outline-none shadow-none w-full px-4 text-sm py-2"
+    />
+  </label>
+  <label for="password">
+    <span class="text-sm text-black">Password</span>
+    <input
+      type="password"
+      id="password"
+      class="border border-black outline-none shadow-none w-full px-4 text-sm py-2"
+    />
+  </label>
+  <span class="text-sm">
+    Don't have account,
+    <button (click)="toggleComponent()" class="font-bold">register here</button>
+  </span>
+  <button class="button-primary py-2 w-full text-sm">Login</button>
+</div>

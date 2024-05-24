@@ -1,0 +1,88 @@
+<nav class="fixed bg-white z-[99] w-full h-16 flex items-center">
+  <div class="w-[90%] mx-auto flex justify-between items-center relative">
+    <div class="flex md:hidden">
+      <button
+        (click)="onVisible()"
+        class="pi pi-bars text-xl bg-gray-300 p-2 rounded-md"
+      ></button>
+    </div>
+
+    <div>
+      <h2 class="font-anton text-2xl" style="letter-spacing: 1px">
+        MY JACKETID
+      </h2>
+    </div>
+    <ul class="hidden md:flex gap-4">
+      <li *ngFor="let item of navItem">
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="text-black p-2 hover:bg-gray-300 rounded-md trans-300"
+          >{{ item.name }}</a
+        >
+      </li>
+    </ul>
+    <ul
+      [ngClass]="{ '-translate-x-60': !visible, '-translate-x-0': visible }"
+      class="fixed h-screen w-60 transition ease-in-out duration-300 bg-black top-16 left-0 flex md:hidden flex-col items-center gap-5 pt-20"
+    >
+      <li *ngFor="let item of navItem">
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="text-white p-2 hover:bg-gray-300 hover:text-black rounded-md trans-300"
+          >{{ item.name }}</a
+        >
+      </li>
+    </ul>
+
+    <form
+      [ngClass]="{
+        'scale-100': searchVisible,
+        'scale-0': !searchVisible
+      }"
+      class="absolute scale-0 transition ease-in-out duration-300 shadow-lg top-16 bg-white py-1 right-0 left-0 border border-black rounded-full flex overflow-hidden"
+    >
+      <input
+        type="text"
+        class="flex-1 bg-transparent outline-none px-5"
+        placeholder="Type something"
+      />
+      <button class="w-8 h-8 bg-black text-white rounded-full mr-2">
+        <span class="pi pi-arrow-right"></span>
+      </button>
+    </form>
+
+    <div class="flex gap-3">
+      <button
+        (click)="onSearchVisible()"
+        class="pi pi-search text-xl bg-gray-300 p-2 rounded-md"
+      ></button>
+      <button (click)="showDialog()" class="text-sm bg-gray-300 p-2 rounded-md">
+        Register
+      </button>
+
+      <p-dialog
+        header="MY JACKETID"
+        [(visible)]="authVisible"
+        [modal]="true"
+        [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+        [style]="{ width: '50vw' }"
+        [draggable]="false"
+        [resizable]="false"
+      >
+        <app-auth></app-auth>
+      </p-dialog>
+
+      <!-- <a
+        routerLink="cart"
+        class="pi pi-shopping-bag text-xl bg-gray-300 p-2 rounded-md"
+        pBadge
+        value="2"
+        severity="danger"
+      ></a> -->
+    </div>
+  </div>
+</nav>

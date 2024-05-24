@@ -1,0 +1,10 @@
+<section class="container mt-5">
+  <h2 class="font-anton text-3xl text-center mb-3">Top Sponsor</h2>
+  <marquee behavior="scroll" class="w-full">
+    <div class="flex gap-12 items-center w-full">
+      <div *ngFor="let item of sponsors" class="min-w-32">
+        <img [src]="item" alt="" class="w-32" />
+      </div>
+    </div>
+  </marquee>
+</section>

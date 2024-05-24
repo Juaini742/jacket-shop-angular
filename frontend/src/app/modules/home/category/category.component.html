@@ -1,0 +1,18 @@
+<section class="container my-10">
+  <h2 class="font-anton text-3xl text-center">Shop By Categories</h2>
+
+  <div class="flex flex-wrap gap-8 justify-center mt-5">
+    <button
+      *ngFor="let item of categories"
+      class="p-1 hover:bg-gray-300 trans-300 rounded-t-full"
+    >
+      <div class="w-28 h-28 overflow-hidden rounded-full">
+        <img
+          src="https://res.cloudinary.com/dixdqxpza/image/upload/v1716210374/Stylish_British_Youth_Suede_Jacket_agwjdt.jpg"
+          alt="{{ item.name }}"
+        />
+      </div>
+      <h6 class="font-anton text-center mt-3">{{ item.name }}</h6>
+    </button>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+<section class="container my-10">
+  <h2 class="font-anton text-3xl text-center mb-3">Our Gallery</h2>
+  <p class="text-center mb-5">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio sapiente quo
+    doloremque quasi ipsam harum similique, necessitatibus assumenda amet
+    eveniet!
+  </p>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+    <div *ngFor="let item of gallery" class="group">
+      <img
+        src="{{ item }}"
+        alt="gallery"
+        class="w-full group-hover:scale-95 trans-300"
+      />
+    </div>
+  </div>
+</section>

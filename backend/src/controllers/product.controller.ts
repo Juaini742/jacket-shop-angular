@@ -13,6 +13,10 @@ export const getProducts = async (req: Request, res: Response) => {
       whereClause = { category: { name: category } };
     }
 
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || 10;
+    const skip = (page - 1) * limit;
+
     const products = await prisma.product.findMany({
       include: {
         category: {
@@ -20,21 +24,18 @@ export const getProducts = async (req: Request, res: Response) => {
             name: true,
           },
         },
-        color: {
-          select: {
-            name: true,
-          },
-        },
-        size: {
-          select: {
-            name: true,
-          },
-        },
+        color: true,
+        size: true,
       },
       where: whereClause,
+      skip: skip,
+      take: limit,
     });
 
-    res.status(200).json(products);
+    const totalProducts = await prisma.product.count({ where: whereClause });
+    const totalPage = Math.ceil(totalProducts / limit);
+
+    res.status(200).json({ products, page, totalPage, totalProducts });
   } catch (error) {
     console.error(error.message);
     res.status(500).json("Internal Server Error");
@@ -56,6 +57,16 @@ export const getOneProduct = async (req: Request, res: Response) => {
       },
       include: {
         category: {
+          select: {
+            name: true,
+          },
+        },
+        color: {
+          select: {
+            name: true,
+          },
+        },
+        size: {
           select: {
             name: true,
           },

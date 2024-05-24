@@ -1,0 +1,52 @@
+<section class="container overflow-hidden my-10">
+  <h2 class="font-anton text-3xl text-center">For You</h2>
+
+  <p-carousel
+    [value]="products"
+    [numVisible]="4"
+    [numScroll]="3"
+    [circular]="true"
+    [responsiveOptions]="responsiveOptions"
+    autoplayInterval="3000"
+  >
+    <ng-template
+      let-product
+      pTemplate="item"
+      class="flex flex-col gap-2 min-w-52 p-1 group hover:bg-gray-300 trans-300"
+    >
+      <div class="border-1 surface-border border-round m-2 p-3">
+        <div class="mb-3">
+          <div
+            class="md:h-[320px] w-full flex items-center overflow-hidden bg-gray-300"
+          >
+            <img
+              src="{{ product.image }}"
+              [alt]="product.name"
+              class="w-full border-round"
+            />
+          </div>
+        </div>
+        <div class="">
+          <p-rating
+            [(ngModel)]="product.rating"
+            [readonly]="true"
+            iconCancelClass="hidden"
+          />
+          <p class="text-black my-2 font-bold">
+            IDR{{ product.price.toFixed(3) }}
+          </p>
+          <div class="flex justify-between items-center">
+            <h3 class="text-lg font-bold">
+              {{ product.name | truncateName : 16 }}
+            </h3>
+
+            <a
+              routerLink="product/{{ product.id }}"
+              class="button-primary px-3 py-2 pi pi-arrow-right cursor-pointer"
+            ></a>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>

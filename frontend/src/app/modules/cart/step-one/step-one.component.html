@@ -1,0 +1,85 @@
+<div class="flex gap-4">
+  <table class="flex-1">
+    <thead class="pb-2 border-b border-black">
+      <th class="text-sm"></th>
+      <th class="text-sm">Product</th>
+      <th class="text-sm">Quantity</th>
+      <th class="text-sm">Price</th>
+      <th class="text-sm">Sub Total</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of products">
+        <td>
+          <input
+            type="checkbox"
+            id="selected{{ item.id }}"
+            [checked]="isSelected(item)"
+            (change)="onCheckboxChange($event, item)"
+          />
+        </td>
+        <td>
+          <label for="selected{{ item.id }}" class="cursor-pointer">
+            <img src="{{ item.image }}" width="40" alt="{{ item.name }}" />
+          </label>
+        </td>
+        <td>
+          <label for="selected{{ item.id }}" class="flex flex-col gap-1">
+            <span class="text-[10px] font-bold cursor-pointer">
+              {{ item.name | truncateName : 16 }}
+            </span>
+            <span class="text-[10px] text-gray-400 cursor-pointer"
+              >Color: Black</span
+            >
+          </label>
+          <button class="button-danger text-[10px] px-3">Remove</button>
+        </td>
+        <td>
+          <div class="border border-black flex py-1 gap-2 justify-center">
+            <button
+              (click)="onAddQuantity(item.id)"
+              class="button-primary px-2 text-[10px] pi pi-plus-circle"
+            ></button>
+            <span class="text-sm">{{ quantity }}</span>
+            <button
+              (click)="onMinusQuantity()"
+              class="button-primary px-2 text-[10px] pi pi-minus-circle"
+            ></button>
+          </div>
+        </td>
+        <td class="text-[10px] text-center font-bold">
+          IDR. {{ (item.price * quantity).toFixed(3) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="w-56 h-full border border-black p-4">
+    <h2 class="font-anton text-xl">Cart Summary</h2>
+
+    <div class="flex flex-col gap-2 mt-2">
+      <label for="free" class="px-2 py-1 border border-black flex items-center">
+        <input type="radio" name="shipping" id="free" value="free" />
+        <span class="ml-2 text-[10px]">Free shipping </span>
+      </label>
+      <label
+        for="special"
+        class="px-2 py-1 border border-black flex items-center"
+      >
+        <input type="radio" name="shipping" id="special" value="special" />
+        <span class="ml-2 text-[10px]">Special shipping </span>
+      </label>
+      <label for="cod" class="px-2 py-1 border border-black flex items-center">
+        <input type="radio" name="shipping" id="cod" value="cod" />
+        <span class="ml-2 text-[10px]">COD</span>
+      </label>
+    </div>
+
+    <div class="p-2 border-b border-black flex justify-between">
+      <span class="text-[10px]">Total</span>
+      <span class="text-[10px] font-bold">IDR. {{ total.toFixed(3) }}</span>
+    </div>
+
+    <button class="button-primary w-full mt-3 py-2 text-[10px]">
+      Checkout now
+    </button>
+  </div>
+</div>

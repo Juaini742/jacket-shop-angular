@@ -1,0 +1,45 @@
+<section class="container overflow-hidden">
+  <table class="min-w-full">
+    <thead>
+      <tr>
+        <th class="text-left p-2">Product</th>
+        <th class="text-left p-2">Image</th>
+        <th class="text-left p-2">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let item of products"
+        class="hover:bg-gray-200 transition duration-300"
+      >
+        <td class="p-2">
+          <h3 class="text-sm font-bold">
+            {{ item.name | truncateName : 16 }}
+          </h3>
+        </td>
+        <td class="">
+          <img
+            [src]="item.image"
+            [alt]="item.name"
+            width="50"
+            class="transition transform duration-300 hover:scale-95"
+          />
+        </td>
+        <td class="p-2">
+          <p class="text-black my-2 font-bold">
+            IDR{{ item.price.toFixed(3) }}
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="my-10">
+  <p-paginator
+    [rows]="limit"
+    [totalRecords]="totalProduct"
+    (onPageChange)="onPageChange($event)"
+    #paginator
+  ></p-paginator>
+</section>

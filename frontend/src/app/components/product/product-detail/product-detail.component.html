@@ -1,0 +1,88 @@
+<section #contentWrapper class="container mt-20">
+  <button
+    (click)="goBack()"
+    class="pi pi-angle-left p-1 bg-black text-white rounded mb-2"
+  ></button>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div
+      class="min-h-[400px] max-h-[500px] bg-gray-300 flex items-center overflow-hidden"
+    >
+      <img
+        src="{{ product?.image }}"
+        alt="{{ product?.name }}"
+        class="w-full"
+      />
+    </div>
+    <div class="flex flex-col justify-end gap-3">
+      <div class="flex flex-col gap-1">
+        <p-rating
+          [ngModel]="product?.rating"
+          [readonly]="true"
+          iconCancelClass="hidden"
+        />
+        <h2 class="font-anton text-xl">{{ product?.name }}</h2>
+        <p class="text-sm">{{ product?.description }}</p>
+        <h3 class="font-bold">IDR.{{ product?.price?.toFixed(3) }}</h3>
+      </div>
+      <p class="text-sm">Choose Your Size</p>
+      <div class="flex gap-3" *ngIf="product?.size">
+        <span
+          *ngFor="let size of product?.size; let i = index"
+          class="w-10 h-10 bg-gray-300 flex-full-center text-sm rounded text-center"
+        >
+          {{ size.name }}
+        </span>
+      </div>
+      <p class="text-sm">Choose Your Color</p>
+      <div class="flex gap-3" *ngIf="product?.color">
+        <span
+          *ngFor="let color of product?.color; let i = index"
+          class="h-10 w-14 flex-full-center text-sm bg-gray-300 rounded"
+        >
+          {{ color.name }}
+        </span>
+      </div>
+
+      <div class="flex gap-2">
+        <button class="button-primary px-2 py-2 pi pi-plus"></button>
+        <span class="mt-6">1</span>
+        <button class="button-primary px-2 py-2 pi pi-minus"></button>
+      </div>
+
+      <button class="button-primary px-3 py-2">Save Product</button>
+    </div>
+  </div>
+</section>
+
+<section class="container my-10">
+  <h3 class="font-anton text-xl">21 Comments</h3>
+
+  <div class="flex flex-col gap-2 mt-5">
+    <div *ngFor="let item of comments" class="flex gap-5 border-b pb-2">
+      <div class="w-40 md:w-20 lg:w-16 overflow-hidden">
+        <div
+          class="w-12 h-12 bg-gray-300 rounded-full flex-full-center overflow-hidden"
+        >
+          <img src="{{ item.img }}" alt="" class="w-full" />
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <div class="flex gap-1 flex-col-reverse md:flex-row">
+          <h3 class="font-bold mt-2">{{ item.name }}</h3>
+          <p-rating
+            [ngModel]="5"
+            [readonly]="true"
+            iconCancelClass="hidden"
+            style="width: 5px"
+          />
+        </div>
+        <p class="text-sm">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+          nemo consequatur laudantium perspiciatis in ut libero reprehenderit
+          quae aliquid nisi!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

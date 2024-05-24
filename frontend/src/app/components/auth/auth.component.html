@@ -1,0 +1,13 @@
+<div class="flex flex-col w-full gap-2">
+  <app-register
+    *ngIf="isRegisterVisible"
+    [isVisible]="isRegisterVisible"
+    (toggle)="toggleComponent()"
+  ></app-register>
+
+  <app-login
+    *ngIf="!isRegisterVisible"
+    [isVisible]="!isRegisterVisible"
+    (toggle)="toggleComponent()"
+  ></app-login>
+</div>

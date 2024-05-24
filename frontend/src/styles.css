@@ -1,3 +1,56 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  @apply w-[90%] mx-auto;
+}
+
+.flex-justify-center {
+  @apply flex justify-center;
+}
+.flex-item-center {
+  @apply flex items-center;
+}
+.flex-full-center {
+  @apply flex justify-center items-center;
+}
+
+.trans-300 {
+  @apply hover:transition ease-in-out duration-300;
+}
+
+.active {
+  @apply bg-gray-300 font-bold text-black;
+}
+
+.link-active {
+  @apply font-bold;
+}
+
+.button-primary {
+  @apply text-white bg-black rounded-lg shadow-sm hover:bg-gray-800 trans-300;
+}
+.button-secondary {
+  @apply text-white bg-gray-400 rounded-lg shadow-sm hover:bg-gray-600 trans-300;
+}
+.button-danger {
+  @apply text-black border border-red-400 rounded-lg shadow-sm hover:text-white hover:bg-red-600 trans-300;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollable {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
