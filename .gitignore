@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 
 .env
+frontend/src/environments/environment.ts
