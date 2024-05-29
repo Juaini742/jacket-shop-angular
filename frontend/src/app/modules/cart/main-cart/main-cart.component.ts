@@ -3,7 +3,6 @@ import { ButtonModule } from 'primeng/button';
 import { StepperModule } from 'primeng/stepper';
 import { StepOneComponent } from '../step-one/step-one.component';
 import { StepTwoComponent } from '../step-two/step-two.component';
-import { StepThreeComponent } from '../step-three/step-three.component';
 import { CartType } from '../../../../interfaces';
 import { SelectItemService } from '../services/select-item.service';
 import { CartService } from '../../../services/cart.service';
@@ -18,7 +17,6 @@ import { CommonModule } from '@angular/common';
     ButtonModule,
     StepOneComponent,
     StepTwoComponent,
-    StepThreeComponent,
   ],
   templateUrl: './main-cart.component.html',
   styleUrl: './main-cart.component.css',
@@ -26,6 +24,11 @@ import { CommonModule } from '@angular/common';
 export class MainCartComponent {
   carts: CartType[] | null = null;
   selectedItems: any[] = [];
+  isEmpty: boolean = true;
+
+  onIsEmptyChange(isEmpty: boolean) {
+    this.isEmpty = isEmpty;
+  }
 
   get total(): number {
     let totalPrice = 0;

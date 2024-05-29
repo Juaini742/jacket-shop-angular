@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { CartsType, CartType } from '../../interfaces';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  URL_PRIVATE: string = 'http://localhost:8080/api/secured/cart';
+  URL_PRIVATE: string = `${environment.secured_api_url}/cart`;
   private cartSubject = new BehaviorSubject<CartType | null>(null);
   cart$: Observable<CartType | null> = this.cartSubject.asObservable();
 

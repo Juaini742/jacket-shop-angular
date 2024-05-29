@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { CartType } from '../../../../interfaces';
 import { TruncateNamePipe } from '../../../pipes/truncate-name.pipe';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -30,6 +36,8 @@ export class StepOneComponent {
   @Input() carts: CartType[] | null = null;
   @Input() total: number = 0;
   @Input() selectedItems: any[] = [];
+  @Input() isEmpty: boolean = true;
+  @Output() isEmptyChange = new EventEmitter<boolean>();
 
   constructor(
     private selectedItemService: SelectItemService,
@@ -74,7 +82,6 @@ export class StepOneComponent {
     const checkbox = event.target as HTMLInputElement;
     if (checkbox.checked) {
       this.selectedItems.push(item);
-      console.log(this.selectedItems?.[0]);
     } else {
       const index = this.selectedItems.findIndex((i) => i.id === item.id);
       if (index > -1) {
@@ -82,6 +89,8 @@ export class StepOneComponent {
       }
     }
     this.selectedItemService.setSelected(this.selectedItems);
+    this.isEmpty = this.selectedItems.length === 0;
+    this.isEmptyChange.emit(this.isEmpty);
   }
 
   isSelected(item: CartType): boolean {

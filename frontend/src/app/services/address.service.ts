@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { AddressType } from '../../interfaces';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AddressService {
-  URL_SECURED: string = 'http://localhost:8080/api/secured/address';
+  URL_SECURED: string = `${environment.secured_api_url}/address`;
   private addressSubject = new BehaviorSubject<AddressType | null>(null);
   address$: Observable<AddressType | null> = this.addressSubject.asObservable();
   constructor(private apiService: ApiService) {}

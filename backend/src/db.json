@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "Classic Leather Jacket",
-      "price": 199.99,
+      "price": 19,
       "rating": 4.5,
       "brand": "FashionBrand",
       "material": "Genuine Leather",
@@ -12,7 +12,7 @@
     },
     {
       "name": "Baseball Jacket",
-      "price": 89.99,
+      "price": 15,
       "rating": 4.2,
       "brand": "SportyStyle",
       "material": "Polyester",
@@ -22,7 +22,7 @@
     },
     {
       "name": "Jackets and Coats for Men",
-      "price": 149.99,
+      "price": 15,
       "rating": 4.6,
       "brand": "MenStyle",
       "material": "Wool",
@@ -32,7 +32,7 @@
     },
     {
       "name": "Jackets and Coats for Men 1",
-      "price": 159.99,
+      "price": 21,
       "rating": 4.7,
       "brand": "WinterWear",
       "material": "Polyester",
@@ -42,7 +42,7 @@
     },
     {
       "name": "COATS JACKETS",
-      "price": 129.99,
+      "price": 27,
       "rating": 4.3,
       "brand": "ElegantCoats",
       "material": "Wool Blend",
@@ -52,7 +52,7 @@
     },
     {
       "name": "Cazadora con cremallera ribete de rayas sin camiseta",
-      "price": 79.99,
+      "price": 35,
       "rating": 4.1,
       "brand": "CasualWear",
       "material": "Cotton",
@@ -62,7 +62,7 @@
     },
     {
       "name": "Casual Hoodie Long Sleeve Hooded Jacket",
-      "price": 69.99,
+      "price": 20,
       "rating": 4.0,
       "brand": "GURUNVANI",
       "material": "Fleece",
@@ -72,7 +72,7 @@
     },
     {
       "name": "Men Blazer Solid Color Lapel Long Sleeve",
-      "price": 109.99,
+      "price": 15,
       "rating": 4.4,
       "brand": "FormalWear",
       "material": "Polyester",
@@ -82,7 +82,7 @@
     },
     {
       "name": "Jacket Men's Casual Outdoor Wear",
-      "price": 119.99,
+      "price": 21,
       "rating": 4.5,
       "brand": "OutdoorGear",
       "material": "Nylon",
@@ -92,7 +92,7 @@
     },
     {
       "name": "Men Zip Up Bomber Jacket",
-      "price": 99.99,
+      "price": 22,
       "rating": 4.2,
       "brand": "BomberStyle",
       "material": "Polyester",
@@ -102,7 +102,7 @@
     },
     {
       "name": "Stylish British Youth Suede Jacket",
-      "price": 179.99,
+      "price": 24,
       "rating": 4.5,
       "brand": "UrbanStyle",
       "material": "Suede",
@@ -112,7 +112,7 @@
     },
     {
       "name": "Men's Bomber Jacket",
-      "price": 129.99,
+      "price": 30,
       "rating": 4.3,
       "brand": "BomberKing",
       "material": "Polyester",
@@ -122,7 +122,7 @@
     },
     {
       "name": "Suede Jacket with Notched Lapels",
-      "price": 189.99,
+      "price": 31,
       "rating": 4.6,
       "brand": "ClassicSuede",
       "material": "Suede",
@@ -132,7 +132,7 @@
     },
     {
       "name": "Warm Wool Jackets for Men",
-      "price": 149.99,
+      "price": 40,
       "rating": 4.7,
       "brand": "WinterEssentials",
       "material": "Wool",
@@ -142,7 +142,7 @@
     },
     {
       "name": "Men's Jacket",
-      "price": 99.99,
+      "price": 36,
       "rating": 4.2,
       "brand": "EverydayWear",
       "material": "Cotton",
@@ -152,7 +152,7 @@
     },
     {
       "name": "Men's Flap Pocket Denim Jacket",
-      "price": 89.99,
+      "price": 32,
       "rating": 4.1,
       "brand": "DenimTrend",
       "material": "Denim",
@@ -162,7 +162,7 @@
     },
     {
       "name": "Solid Big Pocket Drawstring Collar Neck Leather Jacket",
-      "price": 199.99,
+      "price": 31,
       "rating": 4.5,
       "brand": "LeatherLuxury",
       "material": "Leather",
@@ -172,7 +172,7 @@
     },
     {
       "name": "Men's Sport Coat Chore Jacket",
-      "price": 109.99,
+      "price": 19,
       "rating": 4.3,
       "brand": "SportyChic",
       "material": "Cotton",
@@ -182,7 +182,7 @@
     },
     {
       "name": "Manfinity Hypemode Men's Solid Dual Pocket Denim Jacket",
-      "price": 129.99,
+      "price": 19,
       "rating": 4.4,
       "brand": "Manfinity",
       "material": "Denim",
@@ -192,7 +192,7 @@
     },
     {
       "name": "OrcaJump - Men's Winter Jacket",
-      "price": 139.99,
+      "price": 29,
       "rating": 4.6,
       "brand": "OrcaJump",
       "material": "Polyester",

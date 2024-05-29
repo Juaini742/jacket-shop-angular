@@ -11,7 +11,7 @@ const cartRouter = require("./cart.router");
 
 router.use("/public/user", userRouter);
 router.use("/public/category", categoryRouter);
-router.get("/public/product", getProducts);
+router.get("/public/products", getProducts);
 router.get("/public/product/:id", getOneProduct);
 
 router.use([protectedRoute]);

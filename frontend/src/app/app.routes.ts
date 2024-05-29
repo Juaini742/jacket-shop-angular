@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ProductDetailComponent } from './components/product/product-detail/product-detail.component';
 import { authGuard } from './guards/auth.guard';
+import { SuccessComponent } from './components/success/success.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,11 @@ export const routes: Routes = [
     path: 'cart',
     loadChildren: () =>
       import('./modules/cart/cart.module').then((m) => m.CartModule),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'success',
+    component: SuccessComponent,
     canActivate: [authGuard],
   },
   {

@@ -36,6 +36,7 @@ export const addCartItem = async (req: Request, res: Response) => {
 
     const cartProductId = await prisma.cart.findFirst({
       where: {
+        user_id: id,
         product_id: productId,
       },
     });

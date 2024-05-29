@@ -10,9 +10,12 @@
           [carts]="carts"
           [total]="total"
           [selectedItems]="selectedItems"
+          [isEmpty]="isEmpty"
+          (isEmptyChange)="onIsEmptyChange($event)"
         ></app-step-one>
         <div class="flex pt-4 justify-content-end">
           <p-button
+            [disabled]="isEmpty"
             label="Next"
             icon="pi pi-arrow-right"
             iconPos="right"
@@ -40,32 +43,8 @@
             (onClick)="prevCallback.emit()"
             class="button-secondary px-3 py-1"
           />
-          <!-- <p-button
-            label="Next"
-            icon="pi pi-arrow-right"
-            iconPos="right"
-            (onClick)="nextCallback.emit()"
-            class="button-primary px-3 py-1"
-          /> -->
         </div>
       </ng-template>
     </p-stepperPanel>
-    <!-- <p-stepperPanel header="Checkout Complete">
-      <ng-template
-        pTemplate="content"
-        let-prevCallback="prevCallback"
-        let-index="index"
-      >
-        <app-step-three></app-step-three>
-        <div class="flex pt-4 justify-content-start">
-          <p-button
-            label="Back"
-            icon="pi pi-arrow-left"
-            (onClick)="prevCallback.emit()"
-            class="button-secondary px-3 py-1"
-          />
-        </div>
-      </ng-template>
-    </p-stepperPanel> -->
   </p-stepper>
 </section>
