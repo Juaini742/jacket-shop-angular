@@ -17,6 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.7",
     "@types/cors": "latest",
     "@types/express": "latest",
     "@types/jsonwebtoken": "^9.0.6",
@@ -27,10 +28,12 @@
   "dependencies": {
     "@prisma/client": "^5.14.0",
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "cors": "latest",
     "dotenv": "latest",
     "express": "latest",
     "jsonwebtoken": "^9.0.2",
+    "stripe": "^15.8.0",
     "ts-node": "latest",
     "typescript": "latest"
   },

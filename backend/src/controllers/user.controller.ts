@@ -36,11 +36,28 @@ export const register = async (req: Request, res: Response) => {
       },
     });
 
+    await prisma.address.create({
+      data: {
+        user_id: user.id,
+        prov: "",
+        regency: "",
+        subdistrict: "",
+        district: "",
+        completeAddress: "",
+      },
+    });
+
     const token = jwt.sign({ userId: user.id }, "secret", {
       expiresIn: "1d",
     });
 
-    res.status(200).json({ message: "success", token });
+    res.cookie("tokenID", token, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 86400000,
+    });
+
+    res.status(200).json({ message: "success" });
   } catch (error) {
     console.error(error);
     res.status(500).json("Internal Server Error");
@@ -78,7 +95,13 @@ export const login = async (req: Request, res: Response) => {
       expiresIn: "1d",
     });
 
-    res.status(200).json({ message: "success", token });
+    res.cookie("tokenID", token, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 86400000,
+    });
+
+    res.status(200).json({ message: "success" });
   } catch (error) {
     console.error(error);
     res.status(500).json("Internal Server Error");
@@ -92,6 +115,16 @@ export const getOneUser = async (req: Request, res: Response) => {
     const user = await prisma.user.findUnique({
       where: {
         id,
+      },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        gender: true,
+        born: true,
+        job: true,
+        phone: true,
+        createdAt: true,
       },
     });
 
@@ -111,9 +144,9 @@ export const updateUser = async (req: Request, res: Response) => {
   try {
     const { id } = (req as any).User;
 
-    const { born, gender, job, phone } = req.body;
+    const { username, born, gender, job, phone } = req.body;
 
-    if (!born || !gender || !job || !phone) {
+    if (!username || !born || !gender || !job || !phone) {
       res.status(400).json({ message: "Some credentials is missing" });
       return;
     }
@@ -123,6 +156,7 @@ export const updateUser = async (req: Request, res: Response) => {
         id,
       },
       data: {
+        username,
         born,
         gender,
         job,
@@ -144,4 +178,12 @@ export const updateUser = async (req: Request, res: Response) => {
     console.error(error.message);
     res.status(500).json("Internal Server Error");
   }
+};
+
+export const logout = (_req: Request, res: Response) => {
+  res.cookie("tokenID", "", {
+    expires: new Date(0),
+  });
+
+  res.status(200).json({ message: "Success" });
 };

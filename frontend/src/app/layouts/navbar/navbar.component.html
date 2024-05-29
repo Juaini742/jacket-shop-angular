@@ -1,3 +1,5 @@
+<p-toast />
+
 <nav class="fixed bg-white z-[99] w-full h-16 flex items-center">
   <div class="w-[90%] mx-auto flex justify-between items-center relative">
     <div class="flex md:hidden">
@@ -15,6 +17,7 @@
     <ul class="hidden md:flex gap-4">
       <li *ngFor="let item of navItem">
         <a
+          *ngIf="!item.requiresAuth || (item.requiresAuth && user)"
           [routerLink]="item.path"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
@@ -29,6 +32,7 @@
     >
       <li *ngFor="let item of navItem">
         <a
+          *ngIf="!item.requiresAuth || (item.requiresAuth && user)"
           [routerLink]="item.path"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
@@ -55,16 +59,22 @@
       </button>
     </form>
 
-    <div class="flex gap-3">
+    <div class="flex gap-2">
       <button
         (click)="onSearchVisible()"
         class="pi pi-search text-xl bg-gray-300 p-2 rounded-md"
       ></button>
-      <button (click)="showDialog()" class="text-sm bg-gray-300 p-2 rounded-md">
+
+      <button
+        *ngIf="!user"
+        (click)="showDialog()"
+        class="text-sm bg-gray-300 p-2 rounded-md"
+      >
         Register
       </button>
 
       <p-dialog
+        *ngIf="!user"
         header="MY JACKETID"
         [(visible)]="authVisible"
         [modal]="true"
@@ -76,13 +86,20 @@
         <app-auth></app-auth>
       </p-dialog>
 
-      <!-- <a
+      <a
+        *ngIf="user"
         routerLink="cart"
         class="pi pi-shopping-bag text-xl bg-gray-300 p-2 rounded-md"
         pBadge
-        value="2"
-        severity="danger"
-      ></a> -->
+        [value]="carts?.length || 0"
+        [severity]="'danger'"
+      ></a>
+
+      <button
+        *ngIf="user"
+        (click)="onLogout()"
+        class="text-sm bg-gray-300 p-2 rounded-md pi pi-sign-out"
+      ></button>
     </div>
   </div>
 </nav>

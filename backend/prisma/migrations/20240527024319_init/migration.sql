@@ -78,6 +78,8 @@ CREATE TABLE `Color_Product` (
 CREATE TABLE `Cart` (
     `id` VARCHAR(191) NOT NULL,
     `quantity` INTEGER NOT NULL,
+    `size` VARCHAR(191) NOT NULL,
+    `color` VARCHAR(191) NOT NULL,
     `product_id` VARCHAR(191) NULL,
     `user_id` VARCHAR(191) NULL,
 

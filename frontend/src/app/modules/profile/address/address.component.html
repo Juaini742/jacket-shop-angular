@@ -1,27 +1,64 @@
-<div class="flex flex-col gap-2">
-  <div class="flex flex-col md:flex-row md:justify-between">
-    <p-fieldset legend="Province">
-      <input type="text" class="border-b border-black outline-none w-full" />
-    </p-fieldset>
-    <p-fieldset legend="Regency">
-      <input type="text" class="border-b border-black outline-none w-full" />
-    </p-fieldset>
+<p-toast />
+
+<h5 class="font-anton text-xl">Detail Address User</h5>
+<form
+  [formGroup]="addressForm"
+  (ngSubmit)="update()"
+  class="flex flex-col gap-2 mt-3"
+>
+  <div class="flex flex-col md:flex-row md:justify-between gap-5">
+    <label for="prov" class="w-full">
+      <span class="font-anton" style="letter-spacing: 0.7px">Province</span>
+      <input
+        type="text"
+        id="prov"
+        formControlName="prov"
+        class="border-b border-black outline-none w-full mt-2"
+      />
+    </label>
+    <label for="regency" class="w-full border-b border-black">
+      <span class="font-anton" style="letter-spacing: 0.7px">Regency</span>
+      <input
+        type="text"
+        id="regency"
+        formControlName="regency"
+        class="outline-none w-full mt-2"
+      />
+    </label>
   </div>
-  <div class="flex flex-col md:flex-row md:justify-between">
-    <p-fieldset legend="Subdistrict">
-      <input type="text" class="border-b border-black outline-none w-full" />
-    </p-fieldset>
-    <p-fieldset legend="District">
-      <input type="text" class="border-b border-black outline-none w-full" />
-    </p-fieldset>
+  <div class="flex flex-col md:flex-row md:justify-between gap-5">
+    <label for="subdistrict" class="w-full border-b border-black">
+      <span class="font-anton" style="letter-spacing: 0.7px">Subdistrict</span>
+      <input
+        type="text"
+        id="subdistrict"
+        formControlName="subdistrict"
+        class="outline-none w-full mt-2"
+      />
+    </label>
+    <label for="district" class="w-full border-b border-black">
+      <span class="font-anton" style="letter-spacing: 0.7px">District</span>
+      <input
+        type="text"
+        id="district"
+        formControlName="district"
+        class="outline-none w-full"
+      />
+    </label>
   </div>
-  <p-fieldset legend="More Information">
-    <textarea
-      rows="5"
-      cols="30"
-      pInputTextarea
-      class="border-b border-black outline-none w-full"
-    ></textarea>
-  </p-fieldset>
-  <button class="button-primary py-2">Update Address</button>
-</div>
+  <div class="flex flex-col md:flex-row md:justify-between gap-5">
+    <label for="completeAddress" class="w-full border-b border-black">
+      <span class="font-anton" style="letter-spacing: 0.7px"
+        >More Address Data</span
+      >
+      <input
+        type="text"
+        id="completeAddress"
+        formControlName="completeAddress"
+        class="outline-none w-full mt-2"
+      />
+    </label>
+  </div>
+
+  <button type="submit" class="button-primary py-2">Update Address</button>
+</form>

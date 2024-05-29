@@ -9,18 +9,27 @@ export const protectedRoute = async (
   res: Response,
   next: NextFunction
 ) => {
-  const token = req.headers.authorization;
-
   try {
+    const token = req.cookies["tokenID"];
+
     if (!token) {
       return res
         .status(401)
         .json({ message: "Unauthorized: No token provided" });
     }
 
-    const decodedToken = jwt.verify(token, "secret", {
-      ignoreExpiration: false,
-    }) as { userId?: string };
+    let decodedToken;
+    try {
+      decodedToken = jwt.verify(token, "secret", {
+        ignoreExpiration: false,
+      }) as { userId?: string };
+    } catch (error) {
+      if (error.name === "TokenExpiredError") {
+        res.cookie("tokenID", "", { expires: new Date(0) });
+        return res.status(401).json({ message: "Unauthorized: Token expired" });
+      }
+      throw error;
+    }
 
     const user = await prisma.user.findUnique({
       where: {

@@ -27,16 +27,16 @@ export const addCartItem = async (req: Request, res: Response) => {
   try {
     const { id } = (req as any).User;
 
-    const { quantity, product_id } = req.body;
+    const { quantity, productId, size, color } = req.body;
 
-    if (!quantity || !product_id) {
+    if (!quantity || !productId || !size || !color) {
       res.status(400).json({ message: "Some credentials is missing" });
       return;
     }
 
     const cartProductId = await prisma.cart.findFirst({
       where: {
-        product_id,
+        product_id: productId,
       },
     });
 
@@ -49,7 +49,9 @@ export const addCartItem = async (req: Request, res: Response) => {
       data: {
         user_id: id,
         quantity,
-        product_id,
+        product_id: productId,
+        size,
+        color,
       },
     });
 

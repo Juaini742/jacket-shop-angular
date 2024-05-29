@@ -31,7 +31,7 @@ export class ForYouComponent {
 
   ngOnInit() {
     this.globalProductService.products$.subscribe((data) => {
-      this.products = data.products;
+      this.products = data.products.slice(0, 10);
     });
 
     this.globalProductService.fetchProducts().subscribe();

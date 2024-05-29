@@ -1,59 +1,92 @@
-<div class="flex gap-4">
+<p-toast />
+<p-confirmPopup #confirmPopupRef>
+  <ng-template pTemplate="headless" let-message let-test>
+    <div class="border-round p-3">
+      <span>{{ message.message }}</span>
+      <div class="flex justify-end gap-2 mt-3">
+        <button (click)="reject()" class="button-secondary px-2 text-[10px]">
+          Cancel
+        </button>
+        <button (click)="accept()" class="button-primary px-2 text-[10px]">
+          Delete
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</p-confirmPopup>
+
+<div class="flex flex-col md:flex-row gap-4 relative">
   <table class="flex-1">
     <thead class="pb-2 border-b border-black">
-      <th class="text-sm"></th>
       <th class="text-sm">Product</th>
       <th class="text-sm">Quantity</th>
       <th class="text-sm">Price</th>
       <th class="text-sm">Sub Total</th>
     </thead>
     <tbody>
-      <tr *ngFor="let item of products">
-        <td>
-          <input
-            type="checkbox"
-            id="selected{{ item.id }}"
-            [checked]="isSelected(item)"
-            (change)="onCheckboxChange($event, item)"
-          />
-        </td>
-        <td>
-          <label for="selected{{ item.id }}" class="cursor-pointer">
-            <img src="{{ item.image }}" width="40" alt="{{ item.name }}" />
-          </label>
-        </td>
-        <td>
-          <label for="selected{{ item.id }}" class="flex flex-col gap-1">
-            <span class="text-[10px] font-bold cursor-pointer">
-              {{ item.name | truncateName : 16 }}
-            </span>
-            <span class="text-[10px] text-gray-400 cursor-pointer"
-              >Color: Black</span
+      <tr *ngFor="let item of carts">
+        <td class="flex gap-2">
+          <div class="">
+            <input
+              type="checkbox"
+              id="selected{{ item.id }}"
+              [checked]="isSelected(item)"
+              (change)="onCheckboxChange($event, item)"
+            />
+          </div>
+          <div class="">
+            <label for="selected{{ item.id }}" class="cursor-pointer">
+              <img
+                src="{{ item.product.image }}"
+                width="40"
+                alt="{{ item.product.name }}"
+              />
+            </label>
+          </div>
+          <div class="">
+            <label for="selected{{ item.id }}" class="flex flex-col gap-1">
+              <span class="text-[10px] font-bold cursor-pointer">
+                {{ item.product.name | truncateName : 16 }}
+              </span>
+              <span class="text-[10px] text-gray-400 cursor-pointer"
+                >Color: Black</span
+              >
+            </label>
+            <button
+              (click)="onDelete(item.id)"
+              class="button-danger text-[10px] px-3"
             >
-          </label>
-          <button class="button-danger text-[10px] px-3">Remove</button>
+              Remove
+            </button>
+          </div>
         </td>
+
         <td>
-          <div class="border border-black flex py-1 gap-2 justify-center">
+          <div
+            class="border border-black flex flex-col md:flex-row py-1 gap-2 justify-center items-center"
+          >
             <button
               (click)="onAddQuantity(item.id)"
-              class="button-primary px-2 text-[10px] pi pi-plus-circle"
+              class="button-primary px-2 py-1 text-[10px] pi pi-plus-circle"
             ></button>
-            <span class="text-sm">{{ quantity }}</span>
+            <span class="text-sm">{{ item.quantity }}</span>
             <button
-              (click)="onMinusQuantity()"
-              class="button-primary px-2 text-[10px] pi pi-minus-circle"
+              (click)="onMinusQuantity(item.id)"
+              class="button-primary px-2 py-1 text-[10px] pi pi-minus-circle"
             ></button>
           </div>
         </td>
         <td class="text-[10px] text-center font-bold">
-          IDR. {{ (item.price * quantity).toFixed(3) }}
+          IDR. {{ item.product.price.toFixed(3) }}
+        </td>
+        <td class="text-[10px] text-center font-bold">
+          IDR. {{ (item.product.price * item.quantity).toFixed(3) }}
         </td>
       </tr>
     </tbody>
   </table>
-  <div class="w-56 h-full border border-black p-4">
-    <h2 class="font-anton text-xl">Cart Summary</h2>
+  <div class="w-full md:w-56 h-full border border-black p-4 sticky top-20">
+    <h2 class="font-anton text-xl text-black">Cart Summary</h2>
 
     <div class="flex flex-col gap-2 mt-2">
       <label for="free" class="px-2 py-1 border border-black flex items-center">
@@ -73,13 +106,15 @@
       </label>
     </div>
 
+    <div class="p-2 flex justify-between">
+      <span class="text-[10px]">Items Total</span>
+      <span class="text-[10px] font-bold"
+        >{{ selectedItems.length }} items</span
+      >
+    </div>
     <div class="p-2 border-b border-black flex justify-between">
-      <span class="text-[10px]">Total</span>
+      <span class="text-[10px]">Price Total</span>
       <span class="text-[10px] font-bold">IDR. {{ total.toFixed(3) }}</span>
     </div>
-
-    <button class="button-primary w-full mt-3 py-2 text-[10px]">
-      Checkout now
-    </button>
   </div>
 </div>

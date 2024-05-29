@@ -28,11 +28,11 @@ export class ProductsComponent {
 
   products: Product[] = [];
   limit: number = 10;
-  page: number = 0;
+  page: number = 1;
   totalProduct: number = 0;
 
   onPageChange(event: any) {
-    this.page = event.page;
+    this.page = event.page + 1;
     this.limit = event.rows;
     this.globalProductService.fetchProducts(this.page, this.limit).subscribe();
   }

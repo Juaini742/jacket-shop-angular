@@ -79,6 +79,8 @@ model Color_Product {
 model Cart {
   id         String   @id @unique(map: "id") @default(uuid())
   quantity   Int
+  size       String
+  color      String
   product_id String?
   user_id    String?
   product    Product? @relation(fields: [product_id], references: [id], onDelete: Cascade, onUpdate: Cascade)

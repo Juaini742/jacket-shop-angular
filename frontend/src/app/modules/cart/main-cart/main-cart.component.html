@@ -6,7 +6,11 @@
         let-nextCallback="nextCallback"
         let-index="index"
       >
-        <app-step-one></app-step-one>
+        <app-step-one
+          [carts]="carts"
+          [total]="total"
+          [selectedItems]="selectedItems"
+        ></app-step-one>
         <div class="flex pt-4 justify-content-end">
           <p-button
             label="Next"
@@ -25,7 +29,10 @@
         let-nextCallback="nextCallback"
         let-index="index"
       >
-        <app-step-two></app-step-two>
+        <app-step-two
+          [total]="total"
+          [selectedItems]="selectedItems"
+        ></app-step-two>
         <div class="flex pt-4 w-full justify-between">
           <p-button
             label="Back"
@@ -33,17 +40,17 @@
             (onClick)="prevCallback.emit()"
             class="button-secondary px-3 py-1"
           />
-          <p-button
+          <!-- <p-button
             label="Next"
             icon="pi pi-arrow-right"
             iconPos="right"
             (onClick)="nextCallback.emit()"
             class="button-primary px-3 py-1"
-          />
+          /> -->
         </div>
       </ng-template>
     </p-stepperPanel>
-    <p-stepperPanel header="Checkout Complete">
+    <!-- <p-stepperPanel header="Checkout Complete">
       <ng-template
         pTemplate="content"
         let-prevCallback="prevCallback"
@@ -59,6 +66,6 @@
           />
         </div>
       </ng-template>
-    </p-stepperPanel>
+    </p-stepperPanel> -->
   </p-stepper>
 </section>

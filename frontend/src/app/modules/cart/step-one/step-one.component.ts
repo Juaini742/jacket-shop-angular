@@ -1,51 +1,80 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { GlobalProductService } from '../../../services/global-product.service';
-import { Product } from '../../../../interfaces';
+import { Component, Input, ViewChild } from '@angular/core';
+import { CartType } from '../../../../interfaces';
 import { TruncateNamePipe } from '../../../pipes/truncate-name.pipe';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { SelectItemService } from '../services/select-item.service';
+import { CartService } from '../../../services/cart.service';
+import { ConfirmPopup, ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-step-one',
   standalone: true,
-  imports: [CommonModule, TruncateNamePipe, RadioButtonModule],
+  imports: [
+    CommonModule,
+    TruncateNamePipe,
+    RadioButtonModule,
+    ConfirmPopupModule,
+    ToastModule,
+    ButtonModule,
+  ],
   templateUrl: './step-one.component.html',
   styleUrl: './step-one.component.css',
+  providers: [ConfirmationService, MessageService],
 })
 export class StepOneComponent {
-  products: Product[] = [];
-  selectedItems: any[] = [];
-  quantity: number = 1;
-
-  get total(): number {
-    let totalPrice = 0;
-    this.selectedItems.forEach((item) => {
-      totalPrice += item.price * this.quantity;
-    });
-    return totalPrice;
-  }
+  @ViewChild(ConfirmPopup) confirmPopup!: ConfirmPopup;
+  @Input() carts: CartType[] | null = null;
+  @Input() total: number = 0;
+  @Input() selectedItems: any[] = [];
 
   constructor(
-    private globalProductService: GlobalProductService,
-    private selectedItemService: SelectItemService
+    private selectedItemService: SelectItemService,
+    private cartService: CartService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {}
 
-  onAddQuantity(id: string) {
-    if (this.products.find((i) => i.id === id)) {
-      this.quantity += 1;
-    }
+  accept() {
+    this.confirmPopup.accept();
   }
-  onMinusQuantity() {
-    if (this.quantity > 1) {
-      this.quantity -= 1;
+
+  reject() {
+    this.confirmPopup.reject();
+  }
+
+  onAddQuantity(id: string) {
+    const cart = this.carts?.find((i) => i.id === id);
+    if (cart) {
+      cart.quantity += 1;
+      this.cartService.updateCart(cart).subscribe({
+        error(err) {
+          console.error(err);
+        },
+      });
     }
   }
 
-  onCheckboxChange(event: Event, item: Product) {
+  onMinusQuantity(id: string) {
+    const cart = this.carts?.find((i) => i.id === id);
+    if (cart && cart.quantity > 1) {
+      cart.quantity -= 1;
+      this.cartService.updateCart(cart).subscribe({
+        error(err) {
+          console.error(err);
+        },
+      });
+    }
+  }
+
+  onCheckboxChange(event: Event, item: CartType) {
     const checkbox = event.target as HTMLInputElement;
     if (checkbox.checked) {
       this.selectedItems.push(item);
+      console.log(this.selectedItems?.[0]);
     } else {
       const index = this.selectedItems.findIndex((i) => i.id === item.id);
       if (index > -1) {
@@ -55,7 +84,7 @@ export class StepOneComponent {
     this.selectedItemService.setSelected(this.selectedItems);
   }
 
-  isSelected(item: Product): boolean {
+  isSelected(item: CartType): boolean {
     let initialValue = false;
 
     if (this.selectedItems.length > 0) {
@@ -66,15 +95,32 @@ export class StepOneComponent {
     return initialValue;
   }
 
-  ngOnInit() {
-    this.globalProductService.products$.subscribe((data) => {
-      this.products = data.products.slice(0, 5);
-    });
-
-    this.globalProductService.fetchProducts().subscribe();
-
-    this.selectedItemService.selectedItem$.subscribe((items) => {
-      this.selectedItems = items;
+  onDelete(id: string) {
+    this.confirmationService.confirm({
+      target: event?.target as EventTarget,
+      message: 'Do you want to delete this product?',
+      icon: 'pi pi-info-circle',
+      acceptButtonStyleClass: 'p-button-danger p-button-sm',
+      accept: () => {
+        this.cartService.deleteCart(id).subscribe({
+          next: () => {
+            this.messageService.add({
+              severity: 'info',
+              summary: 'Confirmed',
+              detail: 'Delete product successfully',
+              life: 3000,
+            });
+          },
+        });
+      },
+      reject: () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Rejected',
+          detail: 'Your product is save',
+          life: 3000,
+        });
+      },
     });
   }
 }

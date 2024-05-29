@@ -1,5 +1,187 @@
-<div class="">
-  <div *ngFor="let item of datas" class="">
-    <p>{{ item.name }}</p>
+<!-- <p-toast /> -->
+
+<div class="flex flex-col md:flex-row gap-4 relative">
+  <div class="flex-1">
+    <div class="border border-black w-full px-5 pt-6 pb-5">
+      <h2 class="font-anton text-lg text-black">Contact Information</h2>
+      <div class="mt-4 flex gap-3 justify-between w-full items-center">
+        <label class="text-sm w-full text-black">
+          Username
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >{{ user?.username }}</span
+          >
+        </label>
+        <label class="text-sm w-full text-black">
+          Email
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >{{ user?.email }}</span
+          >
+        </label>
+      </div>
+      <div class="mt-4 flex gap-3 justify-between w-full items-center">
+        <label class="text-sm w-full text-black">
+          Gender
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >{{ user?.gender }}</span
+          >
+        </label>
+        <label class="text-sm w-full text-black">
+          Born
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >{{ user?.born }}</span
+          >
+        </label>
+      </div>
+      <div class="mt-4 flex gap-3 justify-between w-full items-center">
+        <label class="text-sm w-full text-black">
+          Job
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >{{ user?.job }}</span
+          >
+        </label>
+        <label class="text-sm w-full text-black">
+          Phone
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >{{ user?.phone }}</span
+          >
+        </label>
+      </div>
+    </div>
+    <div class="border border-black w-full px-5 pt-6 pb-5 mt-5">
+      <h2 class="font-anton text-lg text-black">Shipping Address</h2>
+      <div class="mt-4 flex gap-3 justify-between w-full items-center">
+        <label class="text-sm w-full text-black">
+          Province
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >{{ address?.prov }}</span
+          >
+        </label>
+        <label class="text-sm w-full text-black">
+          Regency
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >{{ address?.regency }}</span
+          >
+        </label>
+      </div>
+      <div class="mt-4 flex gap-3 justify-between w-full items-center">
+        <label class="text-sm w-full text-black">
+          Subdistrict
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >{{ address?.subdistrict }}</span
+          >
+        </label>
+        <label class="text-sm w-full text-black">
+          District
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >{{ address?.district }}</span
+          >
+        </label>
+      </div>
+      <div class="mt-4 flex gap-3 justify-between w-full items-center">
+        <label class="text-sm w-full text-black">
+          More Address Data
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >{{ address?.completeAddress }}</span
+          >
+        </label>
+      </div>
+    </div>
+    <div class="border border-black w-full px-5 pt-6 pb-5 mt-5">
+      <h2 class="font-anton text-lg text-black">Payment Method</h2>
+      <div class="mt-4 flex gap-3 justify-between w-full items-center">
+        <label class="text-sm w-full text-black">
+          Credit Card
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >Muhamad</span
+          >
+        </label>
+      </div>
+      <div class="mt-4 flex gap-3 justify-between w-full items-center">
+        <label class="text-sm w-full text-black">
+          Card Number
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >Muhamad</span
+          >
+        </label>
+      </div>
+      <div class="mt-4 flex gap-3 justify-between w-full items-center">
+        <label class="text-sm w-full text-black">
+          Expiration Date
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >Muhamad</span
+          >
+        </label>
+        <label class="text-sm w-full text-black">
+          CVC
+          <span
+            class="pl-2 py-1 block border border-gray-600 rounded text-sm w-full"
+            >Muhamad</span
+          >
+        </label>
+
+        
+      </div>
+      <div class="w-full">
+        <div>
+          <ngx-stripe-card
+            [options]="cartOptions"
+            [elementsOptions]="elementOptions"
+          ></ngx-stripe-card>
+        </div>
+
+        <button
+          (click)="onCheckout()"
+          class="button-primary py-2 text-[10px] mt-2 w-full"
+        >
+          Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:w-56 h-full border border-black p-4 sticky top-20">
+    <h2 class="font-anton text-xl text-black">Cart Summary</h2>
+
+    <div class="flex flex-col gap-2 mt-2">
+      <label for="free" class="px-2 py-1 border border-black flex items-center">
+        <input type="radio" name="shipping" id="free" value="free" />
+        <span class="ml-2 text-[10px]">Free shipping </span>
+      </label>
+      <label
+        for="special"
+        class="px-2 py-1 border border-black flex items-center"
+      >
+        <input type="radio" name="shipping" id="special" value="special" />
+        <span class="ml-2 text-[10px]">Special shipping </span>
+      </label>
+      <label for="cod" class="px-2 py-1 border border-black flex items-center">
+        <input type="radio" name="shipping" id="cod" value="cod" />
+        <span class="ml-2 text-[10px]">COD</span>
+      </label>
+    </div>
+
+    <div class="p-2 flex justify-between">
+      <span class="text-[10px]">Items Total</span>
+      <span class="text-[10px] font-bold"
+        >{{ selectedItems.length }} items</span
+      >
+    </div>
+    <div class="p-2 border-b border-black flex justify-between">
+      <span class="text-[10px]">Price Total</span>
+      <span class="text-[10px] font-bold">IDR. {{ total.toFixed(3) }}</span>
+    </div>
   </div>
 </div>

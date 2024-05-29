@@ -1,7 +1,8 @@
+<p-toast />
 <section #contentWrapper class="container mt-20">
   <button
     (click)="goBack()"
-    class="pi pi-angle-left p-1 bg-black text-white rounded mb-2"
+    class="pi pi-angle-double-left p-1 bg-black text-white rounded mb-2"
   ></button>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -26,31 +27,57 @@
         <h3 class="font-bold">IDR.{{ product?.price?.toFixed(3) }}</h3>
       </div>
       <p class="text-sm">Choose Your Size</p>
-      <div class="flex gap-3" *ngIf="product?.size">
-        <span
+      <div *ngIf="product?.size" class="flex gap-3">
+        <label
           *ngFor="let size of product?.size; let i = index"
-          class="w-10 h-10 bg-gray-300 flex-full-center text-sm rounded text-center"
+          [for]="size.name"
+          class="text-sm font-anton flex gap-2"
         >
+          <input
+            [(ngModel)]="selectedSize"
+            name="sizes"
+            [id]="size.name"
+            type="radio"
+            [value]="size.name"
+          />
           {{ size.name }}
-        </span>
+        </label>
       </div>
+
       <p class="text-sm">Choose Your Color</p>
-      <div class="flex gap-3" *ngIf="product?.color">
-        <span
+      <div *ngIf="product?.color" class="flex gap-3">
+        <label
           *ngFor="let color of product?.color; let i = index"
-          class="h-10 w-14 flex-full-center text-sm bg-gray-300 rounded"
+          [for]="color.name"
+          class="text-sm font-anton flex gap-2"
         >
+          <input
+            [(ngModel)]="selectedColor"
+            (change)="onColorChange(color.name)"
+            name="colors"
+            [id]="color.name"
+            type="radio"
+            [value]="color.name"
+          />
           {{ color.name }}
-        </span>
+        </label>
       </div>
 
       <div class="flex gap-2">
-        <button class="button-primary px-2 py-2 pi pi-plus"></button>
-        <span class="mt-6">1</span>
-        <button class="button-primary px-2 py-2 pi pi-minus"></button>
+        <button
+          (click)="onAddQuantity()"
+          class="button-primary px-2 py-2 text-sm pi pi-plus"
+        ></button>
+        <span class="">{{ quantity }}</span>
+        <button
+          (click)="onMinusQuantity()"
+          class="button-primary px-2 py-2 text-sm pi pi-minus"
+        ></button>
       </div>
 
-      <button class="button-primary px-3 py-2">Save Product</button>
+      <button (click)="onSaveProduct()" class="button-primary px-3 py-2">
+        Save Product
+      </button>
     </div>
   </div>
 </section>

@@ -3,6 +3,7 @@ import { HttpContext, HttpHeaders, HttpParams } from '@angular/common/http';
 export interface NavType {
   path: string;
   name: string;
+  requiresAuth?: boolean;
 }
 
 export interface Options {
@@ -77,4 +78,34 @@ export interface Article {
 
 export interface Gallery {
   img: string;
+}
+
+export interface UserType {
+  id?: string;
+  username: string;
+  born?: string;
+  gender?: string;
+  phone?: string;
+  job?: string;
+  email: string;
+  createdAt?: string;
+}
+
+export interface CartType {
+  id: string;
+  quantity: number;
+  size: string;
+  color: string;
+  product: Product;
+}
+
+export type CartsType = CartType[];
+
+export interface AddressType {
+  id: string;
+  prov: string;
+  regency: string;
+  subdistrict: string;
+  district: string;
+  completeAddress: string;
 }

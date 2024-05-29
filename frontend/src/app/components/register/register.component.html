@@ -1,36 +1,71 @@
-<div
+<form
   [ngClass]="{
     'scale-100': isVisible,
     'scale-0 hidden': !isVisible
   }"
-  class="mt-5 flex flex-col w-full gap-2 overflow-hidden"
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  class="mt-5 flex flex-col w-full gap-2"
 >
   <label for="username">
     <span class="text-sm text-black">Username</span>
+
     <input
       id="username"
+      formControlName="username"
+      [class.invalid]="isControlValid('username')"
       class="border border-black outline-none shadow-none w-full px-4 text-sm py-2"
     />
+    <span
+      *ngIf="isMessageInvalid('username')"
+      class="text-[10px] text-red-500"
+      >{{ getErrorMessage("username") }}</span
+    >
   </label>
+
   <label for="email">
     <span class="text-sm text-black">Email</span>
     <input
       type="email"
       id="email"
+      formControlName="email"
+      [class.invalid]="isControlValid('email')"
       class="border border-black outline-none shadow-none w-full px-4 text-sm py-2"
     />
+    <span *ngIf="isMessageInvalid('email')" class="text-[10px] text-red-500">{{
+      getErrorMessage("email")
+    }}</span>
   </label>
+
   <label for="password">
     <span class="text-sm text-black">Password</span>
     <input
       type="password"
       id="password"
+      formControlName="password"
+      [class.invalid]="isControlValid('password')"
       class="border border-black outline-none shadow-none w-full px-4 text-sm py-2"
     />
+    <span
+      *ngIf="isMessageInvalid('password')"
+      class="text-[10px] text-red-500"
+      >{{ getErrorMessage("password") }}</span
+    >
   </label>
+
   <span class="text-sm">
     Already have account,
     <button (click)="toggleComponent()" class="font-bold">login here</button>
   </span>
-  <button class="button-primary py-2 w-full text-sm">Register</button>
-</div>
+  <button
+    type="submit"
+    [disabled]="hasError()"
+    [ngClass]="{
+     'cursor-not-allowed': hasError(),
+     'cursor-pointer': !hasError(),
+    }"
+    class="button-primary py-2 w-full text-sm"
+  >
+    Register
+  </button>
+</form>

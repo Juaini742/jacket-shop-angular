@@ -1,8 +1,20 @@
-<div
+<!-- <div
+  [ngClass]="{
+  'scale-100': messageVisible,
+  'scale-0': !messageVisible,
+}"
+  class="trans-300 font-bold border-2 border-green-700 bg-green-100 absolute top-14 left-6 right-6 py-2 pl-2"
+>
+  Login was successfully!
+</div> -->
+
+<form
   [ngClass]="{
     'scale-100': isVisible,
     'scale-0 hidden': !isVisible
   }"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
   class="mt-5 flex flex-col w-full gap-2 overflow-hidden"
 >
   <label for="email">
@@ -10,20 +22,44 @@
     <input
       type="email"
       id="email"
+      formControlName="email"
+      [class.invalid]="isControlValid('email')"
       class="border border-black outline-none shadow-none w-full px-4 text-sm py-2"
     />
+    <span *ngIf="isMessageInvalid('email')" class="text-[10px] text-red-500">{{
+      getErrorMessage("email")
+    }}</span>
   </label>
+
   <label for="password">
     <span class="text-sm text-black">Password</span>
     <input
       type="password"
       id="password"
+      formControlName="password"
+      [class.invalid]="isControlValid('password')"
       class="border border-black outline-none shadow-none w-full px-4 text-sm py-2"
     />
+    <span
+      *ngIf="isMessageInvalid('password')"
+      class="text-[10px] text-red-500"
+      >{{ getErrorMessage("password") }}</span
+    >
   </label>
+
   <span class="text-sm">
     Don't have account,
     <button (click)="toggleComponent()" class="font-bold">register here</button>
   </span>
-  <button class="button-primary py-2 w-full text-sm">Login</button>
-</div>
+  <button
+    type="submit"
+    [disabled]="hasError()"
+    [ngClass]="{
+   'cursor-not-allowed': hasError(),
+   'cursor-pointer': !hasError(),
+  }"
+    class="button-primary py-2 w-full text-sm"
+  >
+    Login
+  </button>
+</form>
