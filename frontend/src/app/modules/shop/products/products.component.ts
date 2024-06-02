@@ -30,19 +30,30 @@ export class ProductsComponent {
   limit: number = 10;
   page: number = 1;
   totalProduct: number = 0;
+  isLoading: boolean = true;
 
   onPageChange(event: any) {
     this.page = event.page + 1;
     this.limit = event.rows;
-    this.globalProductService.fetchProducts(this.page, this.limit).subscribe();
+    this.fetchProducts();
+  }
+
+  fetchProducts() {
+    this.isLoading = true;
+    this.globalProductService
+      .fetchProducts(this.page, this.limit)
+      .subscribe(() => {
+        this.isLoading = false;
+      });
   }
 
   ngOnInit() {
     this.globalProductService.products$.subscribe((data) => {
       this.products = data.products;
       this.totalProduct = data.totalProducts;
+      this.isLoading = false;
     });
 
-    this.globalProductService.fetchProducts(this.page, this.limit).subscribe();
+    this.fetchProducts();
   }
 }

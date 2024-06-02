@@ -15,6 +15,7 @@ import { filter } from 'rxjs';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CartService } from '../../../services/cart.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-product-detail',
@@ -161,7 +162,7 @@ export class ProductDetailComponent {
   }
 
   fetchProduct() {
-    this.URL_API = `http://localhost:8080/api/public/product/${this.productId}`;
+    this.URL_API = `${environment.public_api_url}/product/${this.productId}`;
     this.productService.getProducts(this.URL_API).subscribe({
       next: (data: any) => {
         this.product = data;

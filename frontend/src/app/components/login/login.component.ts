@@ -23,6 +23,8 @@ export class LoginComponent {
 
   isSubmitted = false;
   messageVisible: boolean = false;
+  rootErrorMessage: string = '';
+  isLoading: boolean = false;
 
   errorMessage: { [key: string]: (error?: any) => string } = {
     required: () => 'Field is required',
@@ -84,8 +86,9 @@ export class LoginComponent {
           alert('Login was successfully');
           this.cartService.getCart().subscribe();
         },
-        error(err) {
-          console.error(err);
+        error: (err) => {
+          this.rootErrorMessage = 'Something wrong, try again';
+          console.error(err.error.message);
         },
       });
     } else {

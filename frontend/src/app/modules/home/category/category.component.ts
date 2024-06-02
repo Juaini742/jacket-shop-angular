@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CategoryService } from '../services/category.service';
 import { Category, Categories } from '../../../../interfaces';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-category',
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class CategoryComponent {
   constructor(private categoryService: CategoryService) {}
 
-  URL_PUBLIC_API: string = 'http://localhost:8080/api/public/category';
+  URL_PUBLIC_API: string = `${environment.public_api_url}/category`;
   categories: Category[] = [];
 
   fetchingData() {

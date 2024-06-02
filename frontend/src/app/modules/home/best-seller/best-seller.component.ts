@@ -25,13 +25,16 @@ export class BestSellerComponent {
   constructor(private globalProductService: GlobalProductService) {}
 
   products: Product[] = [];
-  URL_PUBLIC_API: string = 'http://localhost:8080/api/public/product';
+  isLoading: boolean = true;
 
   ngOnInit() {
     this.globalProductService.products$.subscribe((data) => {
       this.products = data.products;
+      this.isLoading = false;
     });
 
-    this.globalProductService.fetchProducts(1, 10).subscribe();
+    this.globalProductService
+      .fetchProducts(1, 10)
+      .subscribe(() => (this.isLoading = false));
   }
 }

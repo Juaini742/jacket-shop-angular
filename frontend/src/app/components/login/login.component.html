@@ -17,6 +17,10 @@
   (ngSubmit)="onSubmit()"
   class="mt-5 flex flex-col w-full gap-2 overflow-hidden"
 >
+  <div *ngIf="rootErrorMessage !== ''">
+    <span class="text-sm text-red-500 text-center">{{ rootErrorMessage }}</span>
+  </div>
+
   <label for="email">
     <span class="text-sm text-black">Email</span>
     <input
@@ -53,6 +57,7 @@
   </span>
   <button
     type="submit"
+    [disabled]="isSubmitted"
     [disabled]="hasError()"
     [ngClass]="{
    'cursor-not-allowed': hasError(),
@@ -60,6 +65,6 @@
   }"
     class="button-primary py-2 w-full text-sm"
   >
-    Login
+    {{ isSubmitted ? "Loading..." : "Login" }}
   </button>
 </form>

@@ -59,13 +59,14 @@
   </span>
   <button
     type="submit"
+    [disabled]="isSubmitted"
     [disabled]="hasError()"
     [ngClass]="{
-     'cursor-not-allowed': hasError(),
-     'cursor-pointer': !hasError(),
+     'cursor-not-allowed': isSubmitted,
+     'cursor-pointer': !isSubmitted,
     }"
     class="button-primary py-2 w-full text-sm"
   >
-    Register
+    {{ isSubmitted ? "Loading..." : "Register" }}
   </button>
 </form>

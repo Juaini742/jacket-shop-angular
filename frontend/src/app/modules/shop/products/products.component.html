@@ -1,38 +1,65 @@
 <section class="container overflow-hidden mt-16">
-  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-5">
-    <div
-      *ngFor="let item of products"
-      class="flex flex-col gap-2 min-w-44 p-1 group hover:bg-gray-300 trans-300"
-    >
+  <div *ngIf="isLoading; else productList">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-5">
       <div
-        class="h-[210px] w-full flex items-center overflow-hidden bg-gray-300"
+        *ngFor="let _ of [].constructor(limit); index as i"
+        class="animate-pulse flex flex-col gap-2 min-w-44 p-1 group bg-gray-300 trans-300"
       >
-        <img
-          src="{{ item.image }}"
-          alt="{{ item.name }}"
-          class="h-full w-full group-hover:scale-95 trans-300"
-        />
-      </div>
-      <div class="">
-        <p-rating
-          [(ngModel)]="item.rating"
-          [readonly]="true"
-          iconCancelClass="hidden"
-        />
-        <p class="text-black my-2 font-bold">IDR{{ item.price.toFixed(3) }}</p>
-        <div class="flex justify-between items-center">
-          <h3 class="text-sm font-bold">
-            {{ item.name | truncateName : 16 }}
-          </h3>
-
-          <a
-            routerLink="/product/{{ item.id }}"
-            class="button-primary px-2 py-1 pi pi-angle-double-right cursor-pointer"
-          ></a>
+        <div
+          class="h-[210px] w-full flex items-center overflow-hidden bg-gray-400"
+        ></div>
+        <div class="">
+          <p class="rounded-md h-6 w-full bg-gray-400 mb-2"></p>
+          <div class="flex justify-between items-center gap-3">
+            <h3 class="rounded-md h-6 w-full bg-gray-400"></h3>
+            <div
+              class="bg-gray-400 rounded px-2 py-1 pi pi-angle-double-right cursor-pointer"
+            ></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <ng-template #productList>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-5">
+      <div
+        #productList
+        *ngFor="let item of products"
+        class="flex flex-col gap-2 min-w-44 p-1 group hover:bg-gray-300 trans-300"
+      >
+        <div
+          class="h-[210px] w-full flex items-center overflow-hidden bg-gray-300"
+        >
+          <img
+            src="{{ item.image }}"
+            alt="{{ item.name }}"
+            class="h-full w-full group-hover:scale-95 trans-300"
+          />
+        </div>
+        <div class="">
+          <p-rating
+            [(ngModel)]="item.rating"
+            [readonly]="true"
+            iconCancelClass="hidden"
+          />
+          <p class="text-black my-2 font-bold">
+            IDR{{ item.price.toFixed(3) }}
+          </p>
+          <div class="flex justify-between items-center">
+            <h3 class="text-sm font-bold">
+              {{ item.name | truncateName : 16 }}
+            </h3>
+
+            <a
+              routerLink="/product/{{ item.id }}"
+              class="button-primary px-2 py-1 pi pi-angle-double-right cursor-pointer"
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </section>
 
 <section class="my-10">

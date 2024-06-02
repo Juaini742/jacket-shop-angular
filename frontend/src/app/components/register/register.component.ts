@@ -10,7 +10,6 @@ import {
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { LoginComponent } from '../login/login.component';
 import { UserService } from '../../services/user.service';
-import { UserType } from '../../../interfaces';
 
 @Component({
   selector: 'app-register',
