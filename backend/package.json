@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "nodemon src/index.ts",
+    "dev": "node ./dist/index.js",
     "build": "tsc",
     "ts-node": "ts-node --compiler-options '{\"module\":\"CommonJS\"}'",
     "seed": "npx prisma db seed",
