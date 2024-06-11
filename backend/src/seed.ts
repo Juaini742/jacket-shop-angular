@@ -1,7 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 const dataMap = require("./db.json");
+import dotenv from "dotenv";
 
-const prisma = new PrismaClient();
+dotenv.config();
+
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL_PRODUCTION,
+    },
+  },
+});
 
 async function main() {
   // Create all categories and store their IDs

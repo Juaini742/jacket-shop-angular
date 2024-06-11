@@ -88,9 +88,13 @@ export class StepTwoComponent {
 
     const products = { products: this.selectedItems };
     this.http
-      .post('http://localhost:8080/api/secured/checkout', products, {
-        withCredentials: true,
-      })
+      .post(
+        'https://jacketapi.jcraftstudio.my.id//api/secured/checkout',
+        products,
+        {
+          withCredentials: true,
+        }
+      )
       .pipe(
         switchMap((session: any) => {
           return this.stripeService.redirectToCheckout({

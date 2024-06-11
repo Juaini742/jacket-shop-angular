@@ -65,6 +65,7 @@ export class ProductDetailComponent {
   productId: string = '';
   URL_API: string = '';
   product: Product | null = null;
+  isSubmitting: boolean = false;
 
   selectedSize: string = '';
   selectedColor: string = '';
@@ -80,12 +81,14 @@ export class ProductDetailComponent {
   ) {}
 
   onSaveProduct() {
+    this.isSubmitting = true;
     if (!this.selectedSize) {
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
         detail: 'Please select one size',
       });
+      this.isSubmitting = false;
       return;
     }
     if (!this.selectedColor) {
@@ -94,6 +97,7 @@ export class ProductDetailComponent {
         summary: 'Error',
         detail: 'please select a color',
       });
+      this.isSubmitting = false;
       return;
     }
 
@@ -113,6 +117,7 @@ export class ProductDetailComponent {
           summary: 'Success',
           detail: 'Product saved Successfully!',
         });
+        this.isSubmitting = false;
       },
       error: (err: any) => {
         if (err.status === 401) {
@@ -121,12 +126,14 @@ export class ProductDetailComponent {
             summary: 'Error',
             detail: 'Please login if you want to save this product',
           });
+          this.isSubmitting = false;
         } else {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
             detail: 'The product has been saved in your cart.',
           });
+          this.isSubmitting = false;
         }
       },
     });

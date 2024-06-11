@@ -25,7 +25,12 @@ export const protectedRoute = async (
       }) as { userId?: string };
     } catch (error) {
       if (error.name === "TokenExpiredError") {
-        res.cookie("tokenID", "", { expires: new Date(0) });
+        res.cookie("tokenID", "", {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          expires: new Date(0),
+          sameSite: "none",
+        });
         return res.status(401).json({ message: "Unauthorized: Token expired" });
       }
       throw error;

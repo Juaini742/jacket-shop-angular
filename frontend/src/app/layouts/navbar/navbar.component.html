@@ -9,7 +9,8 @@
       ></button>
     </div>
 
-    <div>
+    <div class="flex items-center gap-2">
+      <img src="../../../assets/images/logo.jpg" alt="logo" width="40" />
       <h2 class="font-anton text-2xl" style="letter-spacing: 1px">
         MY JACKETID
       </h2>
@@ -75,7 +76,6 @@
 
       <p-dialog
         *ngIf="!user"
-        header="MY JACKETID"
         [(visible)]="authVisible"
         [modal]="true"
         [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
@@ -83,6 +83,15 @@
         [draggable]="false"
         [resizable]="false"
       >
+        <ng-template pTemplate="header">
+          <div class="flex items-center gap-2">
+            <img src="../../../assets/images/logo.jpg" alt="logo" width="36" />
+            <h2 class="font-anton text-xl" style="letter-spacing: 1px">
+              MY JACKETID
+            </h2>
+          </div>
+        </ng-template>
+
         <app-auth></app-auth>
       </p-dialog>
 

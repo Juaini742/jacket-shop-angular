@@ -68,7 +68,15 @@
     </label>
   </div>
 
-  <button type="submit" [disabled]="isLoading" class="button-primary py-2">
-    Update Address
+  <button
+    type="submit"
+    [disabled]="isLoading"
+    class="button-primary py-2"
+    [ngClass]="{
+    'cursor-not-allowed': isLoading,
+    '': !isLoading,
+  }"
+  >
+    {{ isLoading ? "Loading..." : "Update Account" }}
   </button>
 </form>

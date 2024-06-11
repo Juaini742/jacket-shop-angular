@@ -55,6 +55,7 @@ export const register = async (req: Request, res: Response) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       maxAge: 86400000,
+      sameSite: "none",
     });
 
     res.status(200).json({ message: "success" });
@@ -183,7 +184,10 @@ export const updateUser = async (req: Request, res: Response) => {
 
 export const logout = (_req: Request, res: Response) => {
   res.cookie("tokenID", "", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
     expires: new Date(0),
+    sameSite: "none",
   });
 
   res.status(200).json({ message: "Success" });

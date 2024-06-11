@@ -75,8 +75,16 @@
         ></button>
       </div>
 
-      <button (click)="onSaveProduct()" class="button-primary px-3 py-2">
-        Save Product
+      <button
+        [disabled]="isSubmitting"
+        (click)="onSaveProduct()"
+        class="button-primary px-3 py-2"
+        [ngClass]="{
+          'cursor-not-allowed': isSubmitting,
+          '': !isSubmitting,
+        }"
+      >
+        {{ isSubmitting ? "Loading..." : "Save Product" }}
       </button>
     </div>
   </div>

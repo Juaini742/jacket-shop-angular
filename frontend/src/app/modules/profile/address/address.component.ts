@@ -35,6 +35,7 @@ export class AddressComponent {
     district: ['', Validators.required],
     completeAddress: ['', Validators.required],
   });
+  isLoading: boolean = false;
   constructor(
     private addressService: AddressService,
     private fb: FormBuilder,
@@ -42,6 +43,8 @@ export class AddressComponent {
   ) {}
 
   update() {
+    this.isLoading = true;
+
     if (this.addressForm.invalid) {
       return;
     }
@@ -58,6 +61,7 @@ export class AddressComponent {
           summary: 'Success',
           detail: 'Address updated successfully',
         });
+        this.isLoading = false;
       },
       (err) => {
         console.error(err);
@@ -66,6 +70,7 @@ export class AddressComponent {
           summary: 'Error',
           detail: 'Error when updating address',
         });
+        this.isLoading = false;
       }
     );
   }
