@@ -148,6 +148,35 @@ backend/
 └── ... # Other root-level files (e.g., README.md, .env)
 ```
 
+### Directory Descriptions
+
+#### `prisma/`
+
+This directory contains all the Prisma ORM related files, including migration files and seed data.
+
+- **`prisma/migrations/`**: Stores migration files that define the changes to the database schema.
+- **`prisma/schema.prisma`**: Script for Schema.
+
+#### `src/`
+
+This is the main source directory for the backend application.
+
+- **`src/controller/`**: Contains all the controller files. Controllers handle the incoming HTTP requests and return responses.
+- **`src/middleware/`**: Contains middleware files. Middleware functions are used to handle request processing before reaching the route handler.
+- **`src/router/`**: Contains all the route files. Routes define the endpoints of the application and map them to controller actions.
+- **`src/utilities/`**: Contains custom utility functions that are used throughout the application.
+- **`src/index.ts`**: The main server file that initializes the Express application and starts the server.
+- **`src/seed.ts`**: Script for seeding the database with initial data, separate from the Prisma seed script.
+
+### Root-Level Files
+
+- **`package.json`**: The npm configuration file containing project dependencies and scripts.
+- **`tsconfig.json`**: The TypeScript configuration file that specifies the compiler options for the project.
+- **`.env`**: Environment configuration file for setting environment variables.
+- **`README.md`**: The main README file containing information about the project.
+
+---
+
 ## Contributing
 
 We welcome contributions from the community! If you find any issues or have suggestions for improvements, feel free to submit a pull request or open an issue.
